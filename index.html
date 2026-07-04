@@ -22,6 +22,9 @@
                 <il><a href="#certificates">Certificates</a></il>
                 <il><a href="#contact">Contact us</a></il>
             </ul>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+                <span class="theme-toggle-icon"></span>
+            </button>
         </div>
     </nav>
 
@@ -49,24 +52,54 @@
 
     <section class="section about-section" id="about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <div class="section-title-wrap">
+                <h2 class="section-title">About Me</h2>
+                <span class="section-title-strip"></span>
+            </div>
             <div class="about-grid">
-                <div class="about-img">
-                    <img src="./assest/aboutimage.jpg" alt="About image warrap">
+                <!-- Portrait -->
+                <div class="about-img-wrap">
+                    <div class="about-img-ring">
+                        <div class="about-img-ring-inner">
+                            <img src="./assest/aboutimage.jpg" alt="Herhira Othmane — Web Developer">
+                        </div>
+                    </div>
+                    <div class="about-badge">
+                        <span class="about-badge-dot"></span>
+                        Available for work
+                    </div>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <div class="about-stat-num">3+</div>
+                            <div class="about-stat-label">Projects</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-num">1+</div>
+                            <div class="about-stat-label">Yr Exp</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-num">2</div>
+                            <div class="about-stat-label">Courses</div>
+                        </div>
+                    </div>
                 </div>
+                <!-- Content -->
                 <div class="about-content">
-                    <p>Hi, I’m a beginner front-end developer passionate about building clean and responsive websites. I enjoy learning modern web technologies like HTML, CSS, JavaScript, and React while improving my design and problem-solving skills. My goal is to create user-friendly digital experiences and grow every day as a developer.</p>
+                    <p class="about-bio-card">Hi, I'm a beginner front-end developer passionate about building clean and responsive websites. I enjoy learning modern web technologies like HTML, CSS, JavaScript, and React while improving my design and problem-solving skills. My goal is to create user-friendly digital experiences and grow every day as a developer.</p>
                     <div class="skills-about-section">
-                    <h3 class="skill-title">What can i Do it ?</h3>
-                    <ul class="skills-links">
-                        <il><i class="fas fa-check"></i> Responsive Design</il>
-                        <il><i class="fas fa-check"></i> Portfolio Websites</il>
-                    </ul>
+                        <h3 class="skill-title">What can I do?</h3>
+                        <ul class="skills-links">
+                            <il><i class="fas fa-check"></i> Responsive Design</il>
+                            <il><i class="fas fa-check"></i> Portfolio Websites</il>
+                            <il><i class="fas fa-check"></i> UI / UX Design</il>
+                            <il><i class="fas fa-check"></i> Clean Code</il>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <section class="section tech-skills-section" id="skills">
         <div class="container">
@@ -275,5 +308,20 @@
             <a href="#home" class="footer-top">Back to top <i class="fas fa-arrow-up"></i></a>
         </div>
     </footer>
+<script>
+    (function () {
+        const btn = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Apply saved preference immediately (no flash)
+        const saved = localStorage.getItem('theme');
+        if (saved === 'light') body.classList.add('light-mode');
+
+        btn.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
+        });
+    })();
+</script>
 </body>
 </html>
