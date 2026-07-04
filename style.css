@@ -837,73 +837,131 @@ body.light-mode .course-image {
     gap: 2rem;
 }
 
-
 .project-card {
     background-color: #0f0f1e;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
     border: 1px solid rgba(96, 28, 252, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(96, 28, 252, 0.4);
-  border-color: rgba(96, 28, 252, 0.5);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(96, 28, 252, 0.45);
+    border-color: rgba(96, 28, 252, 0.55);
 }
 
+/* ── Image cover ── */
 .project-image {
     width: 100%;
     height: 220px;
     overflow: hidden;
     background-color: #050510;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
 }
 
 .project-image img {
     width: 100%;
     height: 100%;
-    background-position: center;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    object-position: center center;
+    display: block;
+    transition: transform 0.55s ease;
 }
 
-.project-card:hover {
-    .project-image img {
-        transform: scale(1.05);
-    }
+.project-card:hover .project-image img {
+    transform: scale(1.07);
 }
 
+/* overlay gradient on hover */
+.project-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(5, 5, 16, 0.55) 100%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+}
+
+.project-card:hover .project-image::after {
+    opacity: 1;
+}
+
+/* ── Content ── */
 .project-content {
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .projectcard-title {
-    font-size: 1.5rem;
-    color: #e0e0e0;
+    font-size: 1.25rem;
+    color: #e8e8ff;
     font-weight: 700;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
 }
 
 .project-content p {
-    font-size: 0.75rem;
-    margin-bottom: 0.8rem;
-    color: #b0b0b0;
-    line-height: 1.5rem;
+    font-size: 0.875rem;
+    margin-bottom: 1.25rem;
+    color: #9090b0;
+    line-height: 1.6;
+    flex: 1;
 }
 
+/* ── Project link — premium button ── */
 .project-link {
+    position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    color: #1c1fe6;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    background: linear-gradient(135deg, rgba(28, 31, 230, 0.18) 0%, rgba(96, 28, 252, 0.18) 100%);
+    border: 1px solid rgba(96, 28, 252, 0.35);
+    border-radius: 10px;
+    color: #8aabff;
     text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: gap 0.5s ease;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    overflow: hidden;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* shimmer sweep */
+.project-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.12), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.55s ease;
+    pointer-events: none;
+}
+
+.project-link:hover::before {
+    left: 140%;
 }
 
 .project-link:hover {
-    gap: 0.75rem;
+    background: linear-gradient(135deg, rgba(28, 31, 230, 0.35) 0%, rgba(96, 28, 252, 0.35) 100%);
+    border-color: rgba(96, 28, 252, 0.7);
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(96, 28, 252, 0.35);
 }
 
 /* Sections */
